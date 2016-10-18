@@ -8,9 +8,9 @@ import sys
 import socketserver
 
 
-class EchoHandler(socketserver.DatagramRequestHandler):
+class SIPRegisterHandler(socketserver.DatagramRequestHandler):
     """
-    Echo server class
+    SIP Register Handler
     """
 
     def handle(self):
@@ -24,7 +24,7 @@ class EchoHandler(socketserver.DatagramRequestHandler):
 if __name__ == "__main__":
 
     Port_serv = int(sys.argv[1])
-    serv = socketserver.UDPServer(('', Port_serv), EchoHandler)
+    serv = socketserver.UDPServer(('', Port_serv), SIPRegisterHandler)
     print("Lanzando servidor UDP de eco...")
     try:
         serv.serve_forever()

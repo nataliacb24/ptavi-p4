@@ -16,6 +16,7 @@ class SIPRegisterHandler(socketserver.DatagramRequestHandler):
     """
 
     Dicc = {}
+
     def register2json(self):
         """
         Creacion fichero json con los datos de un diccionario
@@ -64,7 +65,8 @@ class SIPRegisterHandler(socketserver.DatagramRequestHandler):
             if metodo != 'REGISTER' and not "@" in address:
                 break
             time_now = int(time.time()) + int(expire)
-            time_exp = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(time_now))
+            time_gm = time.gmtime(time_now)
+            time_exp = time.strftime('%Y-%m-%d %H:%M:%S', time_gm)
             if expire == '0':
                 del self.Dicc[address]
             else:

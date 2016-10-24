@@ -26,8 +26,8 @@ class SIPRegisterHandler(socketserver.DatagramRequestHandler):
             address = peticion_SIP[1]
             self.Dicc[address] = self.client_address[0]
             self.wfile.write(b"SIP/2.0 200 OK\r\n\r\n")
-            #if peticion_SIP[-1] == 0:
-                #del self.Dicc[peticion_SIP[1]]
+            if peticion_SIP[-1] == '0':
+                del self.Dicc[address]
         print(self.Dicc)
 
 if __name__ == "__main__":

@@ -26,7 +26,6 @@ class SIPRegisterHandler(socketserver.DatagramRequestHandler):
         print('IP cliente:' + IP_client)
         print('Puerto del cliente:' + Port_client + '\n')
         peticion_SIP = self.rfile.read().decode('utf-8').split()
-        print(peticion_SIP)
         if peticion_SIP[0] == 'REGISTER':
             address = peticion_SIP[1]
             self.Dicc[address] = self.client_address[0]

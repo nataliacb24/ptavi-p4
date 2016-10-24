@@ -20,14 +20,14 @@ except:
 IP = sys.argv[1]
 METODO = sys.argv[3]
 ADD = sys.argv[4]
-EXPIRES = sys.argv[5] #tiempo de expiracion segundos
+EXPIRES = sys.argv[5]
 
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as my_socket:
     my_socket.connect((IP, int(PORT)))
     if METODO == "register":
-        PETICION_REG = "REGISTER sip:" + ADD + " SIP/2.0 \r\n" + " Expires: " + EXPIRES
-    print("Enviando:", '\n', PETICION_REG)
-    my_socket.send(bytes(PETICION_REG, 'utf-8') + b'\r\n')
+        PET = "REGISTER sip:" + ADD + " SIP/2.0 \r\n" + " Expires: " + EXPIRES
+    print("Enviando:", '\n', PET)
+    my_socket.send(bytes(PET, 'utf-8') + b'\r\n')
     data = my_socket.recv(1024)
     print('Recibido -- ', data.decode('utf-8'))
 
